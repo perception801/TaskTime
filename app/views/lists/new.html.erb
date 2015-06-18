@@ -1,0 +1,28 @@
+<h2 class="text-center">Create a New List</h2>
+
+<div class="row">
+  <div class="col-md-8">
+    <%= form_for [current_user, @list] do |f| %>
+    <% if @list.errors.any? %>
+      <div class="alert alert-danger">
+        <h4> There are <%= pluralize(@list.errors.count, "error") %>.</h4>
+        <ul>
+          <% @list.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+    <% end %>
+      <%= form_group_tag(@list.errors[:name]) do %>
+        <%= f.label :name %>
+        <%= f.text_field :name, class: 'form-control', placeholder: "List name(Max. 15 characters)" %>
+      <% end %>
+      <%= form_group_tag(@list.errors[:description]) do %>
+        <%= f.label :description %>
+        <%= f.text_area :description, class: 'form-control', placeholder: "Description Goes Here(Max. 250 characters)" %>
+      <% end %>
+      <div class="form-group">
+        <%= f.submit "Create List", class: 'btn btn-primary roboto' %>
+      </div>
+    <% end %>
+  </div>
+</div>
