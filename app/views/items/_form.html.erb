@@ -1,6 +1,6 @@
 <% if current_user %>
   <h4>Add an item:</h4>
-  <%= form_for [list.user, list, list.items.build] do |f| %>
+  <%= form_for [item], remote: true do |f| %>
     <div class="form-group">
       <%= f.label :name %>
       <%= f.text_area :name, class: 'form-control', placeholder: "Enter item details" %>
