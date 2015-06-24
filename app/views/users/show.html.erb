@@ -1,3 +1,4 @@
+<div class="container">
 <div class="row">
   <div class="col-md-12">
     <h2 class="text-center">Hello! <%= current_user.name || current_user.email %></h2>
@@ -13,8 +14,11 @@
         <li><%=link_to list.name , user_list_path(current_user, list), class: 'btn btn-default btn-lg btn-block' %></li>
       <% end %>
     </ul>
+    <br>
     <%= link_to "New List", new_user_list_path(current_user), class: 'btn btn-primary btn-lg btn-block'%>
+    <br>
   </div>
   <div class="col-md-3">
   </div>
+</div>
 </div>

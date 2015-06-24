@@ -2,50 +2,59 @@
 <html>
 <head>
   <title>TaskTime</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+    <%# Modernizr is required for Zurb Foundation %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-    <nav class="navbar navbar-inverse">
-      <div class="container-fluid">
-      <div class="navbar-header">
-      <%= link_to "TaskTime", root_path,  class: 'orange' %>
-    </div>
-    <div class="navbar">
-    <ul class="nav nav-pills">
-           <% if current_user %>
-            <p>Hello <%= current_user.name || current_user.email %>! </p> 
-            <li><%= link_to "Profile", user_path(current_user) %></li>
-
-            <br><%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-           <% else %>
-             <%= link_to "Sign In", new_user_session_path %> or
-             <%= link_to "Sign Up", new_user_registration_path %>
-           <% end %>
-           </ul>
-         </div>
-       </nav>
-
-
-      <div class="container">
+   
+   <div class="container">
       <% if flash[:notice] %>
-      <div class="alert alert-success">
+      <div class="flash alert-box text-center">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
         <%= flash[:notice] %>
       </div>
     <% elsif flash[:error] %>
-      <div class="alert alert-danger">
+      <div class="flash alert-box text-center">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
         <%= flash[:error] %>
       </div>
     <% end %>
+
+      <header class="row global-header">
+        <div class="small-12 small-centered medium-8 medium-centered large-5 large-centered columns">
+          
+         </div>
+          
+        </header>
+
+
+     
   </div>
 </div>
     
+  <div class="row collapse">
+    <div class="small-12 small-centered medium-8 medium-centered large-5 large-centered columns">
+    <%= yield %>
+  </div>
+</div>
 
-<%= yield %>
+<footer class="row">
+  <div class="small-12 small-centered medium-8 medium-centered large-5 large-centered columns text-center"></div>
+  <%if current_user %>
+  Hello <%= current_user.name || current_user.email %>! </p> 
+            <%= link_to "Profile", user_path(current_user) %>
+            <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+           <% else %>
+             <%= link_to "Sign In", new_user_session_path %> or
+             <%= link_to "Sign Up", new_user_registration_path %>
+           <% end %>
+</footer>
+
 
 </body>
 </html>

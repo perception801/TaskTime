@@ -3,8 +3,7 @@ class ItemsController < ActionController::Base
     @user = current_user
     @list = @user.lists.find(params[:list_id])
     @items = @list.items
-
-    @item = @list.items.build(item_params)
+    @item = @list.items.create(item_params)
 
 
     if @item.save

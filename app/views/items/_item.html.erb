@@ -3,6 +3,6 @@
       <%= item.name %>
       <hr>
     <% end %>
-    <%= link_to "", [current_user, @item],  class: 'glyphicon glyphicon-ok', method: :delete, remote: true %>
+    <%= link_to "Completed", [current_user, @item],  class: 'glyphicon glyphicon-ok', method: :delete, remote: true %>
     <hr>
 </div>

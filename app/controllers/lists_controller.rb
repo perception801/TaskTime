@@ -15,6 +15,7 @@ class ListsController < ApplicationController
   end
 
   def show
+    @user = current_user
     @list = List.find(params[:id])
     @items = @list.items
   end
@@ -24,6 +25,7 @@ class ListsController < ApplicationController
   end
 
   def update
+    @user = current_user
     @list = List.find(params[:id])
     if @list.update_attributes(list_params)
       redirect_to user_path(current_user)
