@@ -2,11 +2,20 @@ Rails.application.routes.draw do
   
   devise_for :users
   
-  resources :users, only: [:show, :update] do
-    resources :lists do
-      resources :items
+  resources :users, only: [:show, :update]
+    
+  resources :lists do
+    resources :items
   end
-end
+
+  #../users/12345
+  #resources :users, only: [:show, :update]
+
+  #../lists/12345
+  #../lists/12345/items/67890
+  #resources :lists do
+  #  resources :items
+  #end
 
   root to: 'welcome#index'
   # The priority is based upon order of creation: first created -> highest priority.

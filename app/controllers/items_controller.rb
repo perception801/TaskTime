@@ -1,11 +1,9 @@
 class ItemsController < ActionController::Base
+  before_action :find_list
+
   def create
-    @user = current_user
-    @list = @user.lists.find(params[:list_id])
-    @items = @list.items
-
-    @item = @list.items.build(item_params)
-
+    @new_item = Item.new
+    @item = @list.items.new(item_params)
 
     if @item.save
       flash[:notice] = "Item added successfully"
@@ -20,8 +18,7 @@ class ItemsController < ActionController::Base
   end
 
   def destroy
-    @user = current_user
-    @list = @user.lists.find(params[:list_id])
+
     @item = @list.items.find(params[:id])
 
     if @item.destroy
@@ -37,6 +34,10 @@ class ItemsController < ActionController::Base
   end
 
   private
+
+  def find_list
+    @list = current_user.lists.find(params[:list_id])
+  end
 
   def item_params
     params.require(:item).permit(:name)

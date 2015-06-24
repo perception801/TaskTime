@@ -5,12 +5,13 @@
     <div class="js-items">
     <%= render :partial => 'items/item', collection: @items %>
   </div>
-  <div class="col-md-4">
+  <div class="new-item">
+    <%= render :partial => 'items/form' %>
   </div>
 </div>
 <div class="row">
   <div class="col-md-8">
-    <%= render :partial => 'items/form' %>
+    
   </div>
 </div>
 </div>

@@ -1,6 +1,9 @@
 class ListsController < ApplicationController
+  before_action :set_list
+
+
   def new
-    @list = List.new
+    @list = current_user.lists.new
   end
 
   def create
@@ -15,16 +18,14 @@ class ListsController < ApplicationController
   end
 
   def show
-    @list = List.find(params[:id])
+    @list = current_user.lists.find(params[:id])
     @items = @list.items
   end
 
   def edit
-    @list = List.find(params[:id])
   end
 
   def update
-    @list = List.find(params[:id])
     if @list.update_attributes(list_params)
       redirect_to user_path(current_user)
     else
@@ -34,10 +35,14 @@ class ListsController < ApplicationController
   end
 
   def destroy
-    @list = List.find(params[:id])
+    @list.destroy
   end
 
   private
+
+  def set_list
+    @list = current_user.lists.find(params[:id])
+  end
 
   def list_params
     params.require(:list).permit(:name, :description)
