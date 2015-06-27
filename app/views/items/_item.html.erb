@@ -1,8 +1,14 @@
 <div class="media-body">
     <% @list.items.each do |item| %>
       <div id="<%= item.id %>">
+        <div class="row">
+          <div class="col-md-4">
         <%= item.name %>
-      <%= link_to "", list_item_path(current_user, @list),  class: 'glyphicon glyphicon-ok', method: :delete, remote: true %>
+      </div>
+      <div class ="col-md-6">
+        <%= time_ago_in_words(item.created_at) %> ago (Days remaining: <%= item.days_left %> )
+        </div>
+      <%= link_to "", list_item_path(item.list, item),  class: 'glyphicon glyphicon-ok', method: :delete, remote: true %>
       </div>
     <% end %>
     <hr>
