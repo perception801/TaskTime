@@ -8,25 +8,29 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-    <nav class="navbar navbar-inverse">
-      <div class="container-fluid">
-      <div class="navbar-header">
-      <%= link_to "TaskTime", root_path,  class: 'orange' %>
-    </div>
-    <div class="navbar">
-    <ul class="nav nav-pills">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-sm-4">
+        
            <% if current_user %>
-            <p>Hello <%= current_user.name || current_user.email %>! </p> 
-            <li><%= link_to "Profile", user_path(current_user) %></li>
+            <p>Hello <%= current_user.name || current_user.email %></p> 
+            <%= link_to "Profile", user_path(current_user) %>
 
-            <br><%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+            <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
            <% else %>
-             <%= link_to "Sign In", new_user_session_path %> or
-             <%= link_to "Sign Up", new_user_registration_path %>
+             <%= link_to "Sign In", new_user_session_path, class: "glyphicon glyphicon-log-in" %> or
+             <%= link_to "Sign Up", new_user_registration_path, class: "glyphicon glyphicon-user" %>
            <% end %>
-           </ul>
-         </div>
-       </nav>
+          </div>
+          <div class="col-xs-6 col-sm-4">
+          <%= link_to "TaskTime", root_path,  class: 'orange' %>
+        </div>
+      
+        </div>
+      </div>
+    </div>
+          
+       
 
 
       <div class="container">
@@ -44,8 +48,9 @@
   </div>
 </div>
     
-
+<div class="container">
 <%= yield %>
-
+</div>
+</div>
 </body>
 </html>

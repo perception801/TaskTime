@@ -1,9 +1,10 @@
 <div class="container">
 <h1><%= @list.name %></h1>
 <div class="row">
+  <h2>Items</h2>
   <div class="col-md-8">
     <div class="js-items">
-    <%= render :partial => 'items/item', collection: @items %>
+    <%= render :partial => 'items/item' %>
   </div>
   <div class="new-item">
     <%= render :partial => 'items/form' %>

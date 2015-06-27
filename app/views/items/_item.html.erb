@@ -2,7 +2,7 @@
     <% @list.items.each do |item| %>
       <div id="<%= item.id %>">
         <%= item.name %>
-      <%= link_to "", list_item_path(current_user, @list, item),  class: 'glyphicon glyphicon-ok', method: :delete, remote: true %>
+      <%= link_to "", list_item_path(current_user, @list),  class: 'glyphicon glyphicon-ok', method: :delete, remote: true %>
       </div>
     <% end %>
     <hr>

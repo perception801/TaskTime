@@ -1,6 +1,13 @@
 class ItemsController < ActionController::Base
   before_action :find_list
 
+
+
+  def new
+    @item = @list.items.new
+  end
+
+
   def create
     @new_item = Item.new
     @item = @list.items.new(item_params)
