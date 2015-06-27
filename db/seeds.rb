@@ -26,7 +26,6 @@ lists = List.all
 
     name:   Faker::Commerce.product_name,
     list:   lists.sample,
-    user:   users.sample,
     )
 item.save!
 end
