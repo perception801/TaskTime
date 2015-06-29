@@ -10,7 +10,7 @@
 <body>
     <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-sm-4">
+        <div class="col-md-1">
         
            <% if current_user %>
             <p>Hello <%= current_user.name || current_user.email %></p> 
@@ -18,17 +18,17 @@
 
             <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
            <% else %>
-             <%= link_to "Sign In", new_user_session_path, class: "glyphicon glyphicon-log-in" %> or
-             <%= link_to "Sign Up", new_user_registration_path, class: "glyphicon glyphicon-user" %>
+             <%= link_to "Sign In", new_user_session_path, class: "glyphicon glyphicon-log-in" %> or  
+              <%= link_to "Sign Up", new_user_registration_path, class: "glyphicon glyphicon-user" %>
            <% end %>
           </div>
-          <div class="col-xs-6 col-sm-4">
+          <div class="page-header center">
           <%= link_to "TaskTime", root_path,  class: 'orange' %>
         </div>
       
         </div>
       </div>
-    </div>
+
           
        
 

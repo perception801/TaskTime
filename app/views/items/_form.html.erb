@@ -1,6 +1,6 @@
 <% if current_user %>
   <h4>Add an item:</h4>
-  <%= form_for list_items_path(@list, @list.items.build), remote: true do |f| %>
+  <%= form_for [@list, @list.items.build], remote: true do |f| %>
     <div class="form-group">
       <%= f.label :name %>
       <%= f.text_area :name, class: 'form-control', placeholder: "Enter item details" %>
