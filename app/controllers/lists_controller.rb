@@ -1,19 +1,24 @@
 class ListsController < ApplicationController
-  before_action :set_list
+  before_action :set_list, :except =>[:create]
 
 
   def new
-    @list = current_user.lists.new
+    @list = List.new
   end
 
   def create
+    @new_list = List.new
     @list = current_user.lists.build(list_params)
+    
     if @list.save
       flash[:notice] = "Your list was created successfully"
-      redirect_to user_path(current_user)
     else
       flash[:error] = "There was an error saving your new list, please try again."
-      render :new
+   end
+   
+    respond_to do |format|
+      format.html
+      format.js
     end
   end
 
@@ -35,8 +40,19 @@ class ListsController < ApplicationController
   end
 
   def destroy
-    @list.destroy
+    
+
+    if @list.destroy
+      flash[:notice]= "#{@list.name} has been removed."
+    else
+      flash[:error]= "Sorry looks like there was a problem removing your list, please try again."
+    end
+
+    respond_to do |format|
+      format.html
+      format.js
   end
+end
 
   private
 

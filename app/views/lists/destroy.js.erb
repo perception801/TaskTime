@@ -1,0 +1,5 @@
+<% if @list.destroyed? %>
+  $('#' +<%= @list.id %>).fadeOut();
+<% else %>
+  $('#' +<%= @list.id %>).prepend("<div class='alert alert-danger'><%= flash[:error] %></div>");
+<% end %>  

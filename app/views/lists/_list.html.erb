@@ -1,0 +1,15 @@
+<div class="media-body">
+  <ul class="nav nav-pills nav-stacked">
+      <% @lists.each do |list| %>
+      <div id="<%= list.id %>">
+        <li><%=link_to list.name , list_path(current_user, list) %></li>
+        <%= link_to "", list_path(current_user, @list), class: 'glyphicon glyphicon-ok', method: :delete, remote: true %>
+        <% end %>
+      </ul>
+        <div class="row">
+          <div class="col-md-4">
+        
+      </div>
+      
+      </div>
+    </div>

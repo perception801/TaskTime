@@ -1,0 +1,11 @@
+<% if current_user %>
+  <h4>Add a List</h4>
+  <%= form_for (@list), remote: true do |f| %>
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_area :name, class: 'form-control', placeholder: "Enter List Name" %>
+      <br>
+      <%= f.submit "Add List", class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+<% end %>

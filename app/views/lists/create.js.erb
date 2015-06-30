@@ -1,0 +1,6 @@
+<% if @list.valid? %>
+  $('.js-lists').prepend("<%= escape_javascript(render(@list)) %>");
+  $('.new-list').html("<%= escape_javascript(render partial: 'lists/form', locals: { list: @list list: @new_list }) %>");
+<% else %>
+  $('.new-list').html("<%= escape_javascript(render partial: 'lists/form', locals: { list: @list }) %>");
+<% end %>
